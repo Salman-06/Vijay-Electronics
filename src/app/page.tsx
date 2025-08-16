@@ -110,7 +110,7 @@ export default function Home() {
                         .toLowerCase()
                         .replace(' ', '')}`}
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                   </div>
                 </CardHeader>

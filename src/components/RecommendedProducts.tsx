@@ -66,7 +66,7 @@ export default function RecommendedProducts({
                       alt={product.name}
                       data-ai-hint={`${product.category.toLowerCase().replace(' ', '')}`}
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                 </div>
                 <div>

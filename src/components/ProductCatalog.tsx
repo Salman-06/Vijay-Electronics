@@ -123,7 +123,7 @@ export default function ProductCatalog({ allProducts }: ProductCatalogProps) {
                       alt={product.name}
                       data-ai-hint={`${product.category.toLowerCase().replace(' ', '')}`}
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                   </div>
                   <div className="p-4">
