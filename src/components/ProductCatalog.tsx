@@ -135,7 +135,7 @@ export default function ProductCatalog({ allProducts }: ProductCatalogProps) {
                   <p className="mb-4 text-sm text-muted-foreground">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <p className="text-xl font-bold text-primary">
-                      ₹{product.price.toLocaleString()}
+                      ₹{product.price.toLocaleString('en-IN')}
                     </p>
                     <Button variant="outline" size="sm" onClick={() => handleProductView(product.name)}>
                       View

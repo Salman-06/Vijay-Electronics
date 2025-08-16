@@ -121,7 +121,7 @@ export default function Home() {
                   <p className="mb-4 text-muted-foreground">{product.brand}</p>
                   <div className="flex items-center justify-between">
                     <p className="text-2xl font-bold text-primary">
-                      ₹{product.price.toLocaleString()}
+                      ₹{product.price.toLocaleString('en-IN')}
                     </p>
                     <Button asChild variant="outline">
                       <Link href="/products">View</Link>

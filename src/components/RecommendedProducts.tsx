@@ -71,7 +71,7 @@ export default function RecommendedProducts({
                 </div>
                 <div>
                   <h4 className="font-semibold">{product.name}</h4>
-                  <p className="text-sm text-muted-foreground">₹{product.price.toLocaleString()}</p>
+                  <p className="text-sm text-muted-foreground">₹{product.price.toLocaleString('en-IN')}</p>
                 </div>
               </div>
             ))}
