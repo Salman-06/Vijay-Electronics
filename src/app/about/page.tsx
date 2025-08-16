@@ -19,7 +19,7 @@ export default function AboutPage() {
         </div>
         <div className="relative h-80 overflow-hidden rounded-lg shadow-lg">
           <Image
-            src="https://placehold.co/600x400.png"
+            src="/about.png"
             alt="Vintage electronics storefront"
             data-ai-hint="vintage electronics store"
             fill
