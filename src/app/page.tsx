@@ -1,19 +1,115 @@
-import ProductCatalog from '@/components/ProductCatalog';
+import { Button } from '@/components/ui/button';
 import { products } from '@/lib/products';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle, Zap } from 'lucide-react';
+
+const featuredCategories = [
+    { name: 'Fans', image: 'https://placehold.co/400x300.png', hint: 'fan' },
+    { name: 'Kitchen Appliances', image: 'https://placehold.co/400x300.png', hint: 'kitchen appliance' },
+    { name: 'Grinders', image: 'https://placehold.co/400x300.png', hint: 'grinder' },
+];
 
 export default function Home() {
+  const featuredProducts = products.slice(0, 3);
+
   return (
-    <div className="container mx-auto px-4 py-8 md:px-6">
-      <section className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight font-headline md:text-5xl">
-          Your Trusted Appliance Partner Since 1978
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-          Explore our wide range of major brand name appliances at unbeatable
-          prices. Quality and trust, guaranteed.
-        </p>
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] bg-primary/10">
+        <div className="container mx-auto flex h-full flex-col items-center justify-center text-center">
+          <h1 className="mb-4 text-5xl font-bold tracking-tight font-headline md:text-6xl">
+            Quality Appliances for Every Home
+          </h1>
+          <p className="max-w-3xl mb-8 text-lg text-muted-foreground">
+            Since 1978, we've provided trusted brands and unbeatable prices.
+            Find the perfect appliance to build a better home.
+          </p>
+          <Button asChild size="lg" className='bg-accent hover:bg-accent/90'>
+            <Link href="/products">
+              Explore All Products <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
+        </div>
       </section>
-      <ProductCatalog allProducts={products} />
+
+      {/* Featured Products Section */}
+      <section className="py-16">
+        <div className="container mx-auto">
+          <h2 className="mb-12 text-center text-4xl font-bold font-headline">
+            Featured Products
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {featuredProducts.map((product) => (
+              <Card key={product.id} className="overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+                <CardHeader className="p-0">
+                  <div className="relative h-64 w-full">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      data-ai-hint={`${product.category.toLowerCase().replace(' ', '')}`}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <h3 className="mb-2 text-xl font-bold font-headline">{product.name}</h3>
+                  <p className="mb-4 text-muted-foreground">{product.brand}</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-2xl font-bold text-primary">
+                      ₹{product.price.toLocaleString()}
+                    </p>
+                    <Button asChild variant="outline">
+                      <Link href="/products">View</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+       <section className="bg-muted py-16">
+        <div className="container mx-auto">
+          <h2 className="mb-12 text-center text-4xl font-bold font-headline">Why Choose Vijay Electronics?</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="text-center">
+              <CheckCircle className="mx-auto mb-4 h-12 w-12 text-accent" />
+              <h3 className="mb-2 text-xl font-semibold font-headline">Legacy of Trust</h3>
+              <p className="text-muted-foreground">Serving our community with integrity and dedication since 1978.</p>
+            </div>
+            <div className="text-center">
+              <Zap className="mx-auto mb-4 h-12 w-12 text-accent" />
+              <h3 className="mb-2 text-xl font-semibold font-headline">Quality Guaranteed</h3>
+              <p className="text-muted-foreground">We offer a curated selection of major brand name home appliances.</p>
+            </div>
+            <div className="text-center">
+               <CheckCircle className="mx-auto mb-4 h-12 w-12 text-accent" />
+              <h3 className="mb-2 text-xl font-semibold font-headline">Unbeatable Prices</h3>
+              <p className="text-muted-foreground">Get the best value for your money with our competitive pricing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       {/* Call to Action */}
+      <section className="py-20 text-center">
+        <div className="container mx-auto">
+           <h2 className="mb-4 text-4xl font-bold tracking-tight font-headline">Ready to Upgrade Your Home?</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
+            Browse our complete collection of home appliances and find exactly what you need.
+          </p>
+          <Button asChild size="lg" className='bg-accent hover:bg-accent/90'>
+            <Link href="/products">
+                Shop Now
+            </Link>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }
