@@ -3,13 +3,35 @@ import { products } from '@/lib/products';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star, Zap } from 'lucide-react';
 
 const featuredCategories = [
     { name: 'Fans', image: 'https://placehold.co/400x300.png', hint: 'fan' },
     { name: 'Kitchen Appliances', image: 'https://placehold.co/400x300.png', hint: 'kitchen appliance' },
     { name: 'Grinders', image: 'https://placehold.co/400x300.png', hint: 'grinder' },
 ];
+
+const testimonials = [
+  {
+    quote:
+      'Vijay Electronics has been my go-to for appliances for over a decade. Their quality and service are unmatched. I highly recommend them to everyone!',
+    name: 'Suresh Kumar',
+    location: 'Coimbatore',
+  },
+  {
+    quote:
+      "The staff was incredibly helpful in choosing the right wet grinder for my family. The entire process was seamless, and I'm very happy with my purchase!",
+    name: 'Priya Menon',
+    location: 'Saibaba Colony',
+  },
+  {
+    quote:
+      'I always recommend this store to my friends and family. They have the best prices in town and a fantastic selection of top-quality brands.',
+    name: 'Rajesh Singh',
+    location: 'R.S. Puram',
+  },
+];
+
 
 export default function Home() {
   const featuredProducts = products.slice(0, 3);
@@ -96,8 +118,33 @@ export default function Home() {
         </div>
       </section>
 
+       {/* Testimonials Section */}
+       <section className="py-16">
+        <div className="container mx-auto">
+          <h2 className="mb-12 text-center text-4xl font-bold font-headline">What Our Customers Say</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+                <Card key={index} className="flex flex-col justify-between">
+                <CardContent className="p-6">
+                    <div className="mb-4 flex">
+                        {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        ))}
+                    </div>
+                    <p className="mb-4 text-muted-foreground">"{testimonial.quote}"</p>
+                </CardContent>
+                <CardHeader className="p-6 pt-0">
+                    <div className="font-semibold font-headline">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
        {/* Call to Action */}
-      <section className="py-20 text-center">
+      <section className="py-20 text-center bg-primary/10">
         <div className="container mx-auto">
            <h2 className="mb-4 text-4xl font-bold tracking-tight font-headline">Ready to Upgrade Your Home?</h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
