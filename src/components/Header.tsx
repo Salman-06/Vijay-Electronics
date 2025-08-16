@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Menu, Bolt } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
@@ -48,11 +48,15 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <nav className="mt-8 grid gap-6 text-lg font-medium">
-                 <Link href="/" className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                    <Bolt className="h-7 w-7 text-primary" />
-                    <span className="font-headline text-primary">Vijay Electronics</span>
-                 </Link>
+                <SheetHeader className="border-b pb-4">
+                    <SheetTitle asChild>
+                        <Link href="/" className="flex items-center gap-2">
+                            <Bolt className="h-7 w-7 text-primary" />
+                            <span className="font-headline text-primary">Vijay Electronics</span>
+                        </Link>
+                    </SheetTitle>
+                </SheetHeader>
+              <nav className="mt-6 grid gap-6 text-lg font-medium">
                  {navLinks.map((link) => (
                     <SheetClose key={link.href} asChild>
                       <Link
