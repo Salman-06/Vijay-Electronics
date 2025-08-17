@@ -3,10 +3,10 @@ import type { Product } from './types';
 export const products: Product[] = [
   {
     id: 'cf-001',
-    name: 'Crompton Aura 1200 mm Ceiling Fan (Ivory)',
-    category: 'Ceiling Fan',
-    price: 3275,
-    image: '/crompton-greaves-aura.webp',
+    name: 'Bajaj Tiles Tiles DC 2016 Glacier 67 Litres Personal Room Air Cooler',
+    category: 'Air Cooler',
+    price: 14290,
+    image: '/bajaj_dc_2016_glacier.webp',
     description: 'A stylish and efficient ceiling fan with remote control.',
     brand: 'Brand A',
   },
